@@ -35,3 +35,25 @@ git push origin your_branch_name
 ```
 
 ### 6. 在github上提交pull request
+
+## 常见问题
+
+### 1. 在其他人更新仓库后，本地进度落后了怎么办
+
+首先打开命令行工具，cd到项目目录下，然后输入以下命令：
+
+将自己已经对本地文件做的修改commit到本地仓库：
+```shell
+git add .
+git commit -m "your commit message"
+```
+
+然后将远程仓库的更新拉取到本地：
+```shell
+git pull origin main
+```
+
+最后选择要不要将自己的修改合并到远程仓库，如果需要：
+```shell
+git push origin your_branch_name
+```

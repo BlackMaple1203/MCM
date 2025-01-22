@@ -189,112 +189,43 @@
 \onehalfspacing
 
 \thispagestyle{empty}
-\vspace*{-16ex}
-\centerline{\begin{tabular}{*3{c}}
-	\parbox[t]{0.3\linewidth}{\begin{center}\textbf{Problem Chosen}\\ \Large \textcolor{red}{\Problem}\end{center}}
-	& \parbox[t]{0.3\linewidth}{\begin{center}\textbf{2025\\ MCM / ICM\\ Summary Sheet}\end{center}}
-	& \parbox[t]{0.3\linewidth}{\begin{center}\textbf{Team Control Number}\\ \Large \textcolor{red}{\Team}\end{center}}	\\
-	\bottomrule
-\end{tabular}}
 
-\begin{center}
-  \Large{\textbf{This is the title}}
-\end{center}
-%%%%%%%%%% Begin Summary %%%%%%%%%%%
-\begin{summary}
-Here is the abstract of our paper.
-\end{summary}
+\input{sections/0_1.Header.tex}
+
+\input{sections/0_2.Title.tex}
+
+\input{sections/0_3.Abstract.tex}
 
 \clearpage
 
-%%%%%%%%%% End Summary %%%%%%%%%%%
+
+
+%%%%%%%%%%%%%目录%%%%%%%%%%%%%%
 
 \tableofcontents
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \pagestyle{fancy}
-% Uncomment the next line to generate a Table of Contents
-%\tableofcontents
-\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Introduction}
+\input{sections/1.Introduction.tex}
 
-\subsection{Problem Background}
+\input{sections/2.Preparations.tex}
 
-\begin{itemize}
-    \item First
-    \item Second
-\end{itemize}
+\input{sections/3.Models.tex}
 
-\subsection{Literature Review}
-
-\subsubsection{Whatever}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%引用lastpage宏包，用于获取总页数
-
-\section{Preparations of the Models}
-
-\subsection{Assumptions}
-
-\subsection{Notations}
-
-The primary notations used in this paper are listed in Table 1.
-
-\begin{table}[!htbp]
-  \begin{center}
-  \caption{Notations}
-  \begin{tabular}{cl}
-    \toprule
-    \multicolumn{1}{m{3cm}}{\centering Symbol}
-    &\multicolumn{1}{m{8cm}}{\centering Definition}\\
-    \midrule
-    $A$&the first one\\
-    $b$&the second one\\
-    $\alpha$ &the last one\\
-    \bottomrule
-  \end{tabular}
-  \end{center}
-  \end{table}
-
-
-\section{The Models}
-
-\subsection{Model 1}
-
-\subsubsection{Details about Model 1}
-
-The datail can be described as follows:
-\begin{equation}
-  \frac{\partial u}{\partial t}-a^2\left(\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}+\frac{\partial^2 u}{\partial z^2}\right)=f(x, y, z, t)
-\end{equation}
 
 \clearpage
-\addcontentsline{toc}{section}{References}
 
-\begin{thebibliography}{99}
-  \bibitem{} Einstein, A., Podolsky, B., \& Rosen, N. (1935). Can quantum-mechanical description of physical reality be considered complete?. \emph{Physical review}, 47(10), 777.
-  \bibitem{} \emph{A simple, easy \LaTeX\ template for MCM/ICM: EasyMCM}. (2018). Retrieved December 1, 2019
-\end{thebibliography}
+
+\input{sections/Reference.tex}
+
 \clearpage
 
-\begin{appendices}
-  \section{Further on \LaTeX}
-  \section{Program Codes}
-  \begin{minted}{cpp}
-#include <iostream>
-using namespace std;
-int main() {
-    cout << "Hello, World!" << endl;
-    return 0;
-}
-  \end{minted}
-\end{appendices}
-    
+
+\input{sections/Appendix.tex}
 
 
 
