@@ -57,3 +57,12 @@ git pull origin main
 ```shell
 git push origin your_branch_name
 ```
+
+### 2. 编译tex文件时遇到报错`You must install Pygments`
+
+由于在tex文件中我使用了`minted`环境来展示代码，因此电脑需要安装好python 2.7以上的环境以及`Pygments`包。
+
+安装方法：
+```shell
+pip3 install Pygments
+```
