@@ -22,13 +22,13 @@ print(tourism_income_ratio)
 df = pd.DataFrame(data)
 df.set_index('Year', inplace=True)
 df["Pande_Impact"] = [0, 0, 0, 0, 0, 0, 0.2, 1, 0.8, 0]
-df["Tourist_Count"] = tourism_income_ratio
+df["Tourist_Ratio"] = tourism_income_ratio
 
 # 扩展预测年份到2030年
 forecast_years = list(range(2024, 2030))
 forecast_exog = np.zeros(len(forecast_years))  # 假设未来几年疫情影响因子为0
 
-model0 = SARIMAX(df["Tourist_Count"], exog=df['Pande_Impact'], order=(1, 2, 2))
+model0 = SARIMAX(df["Tourist_Ratio"], exog=df['Pande_Impact'], order=(1, 2, 2))
 fitted_model0 = model0.fit()
 
 forecast0 = fitted_model0.forecast(steps=len(forecast_years), exog=forecast_exog)
@@ -36,18 +36,18 @@ forecast0 = fitted_model0.forecast(steps=len(forecast_years), exog=forecast_exog
 forecast_df0 = pd.DataFrame({
 
     'Year': forecast_years,
-    'Tourist_Count': forecast0
+    'Tourist_Ratio': forecast0
 })
 
 forecast_df0.set_index('Year', inplace=True)
 
 combined_df0 = pd.concat([df, forecast_df0])
 
-plt.plot(combined_df0.index, combined_df0['Tourist_Count'], label='Tourist Count')
+plt.plot(combined_df0.index, combined_df0['Tourist_Ratio'], label='Tourist Count')
 plt.axvline(x=2023, color='r', linestyle='--', label='Forecast Start')
 plt.xlabel('Year')
-plt.ylabel('Tourist Count')
-plt.title('Tourist Count Forecast')
+plt.ylabel('Tourist Ratio')
+plt.title('Tourist Ratio Forecast')
 plt.legend()
 plt.grid(True)
 plt.show()
@@ -70,6 +70,10 @@ forecast_df.set_index('Year', inplace=True)
 
 # 合并已知数据和预测数据
 combined_df = pd.concat([df, forecast_df])
+
+print(combined_df)
+
+combined_df.to_csv('combined_df.csv')
 
 # 绘制图像
 plt.figure(figsize=(10, 6))
