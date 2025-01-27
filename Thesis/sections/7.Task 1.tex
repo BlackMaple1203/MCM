@@ -73,6 +73,34 @@ The tax income can be calculated as follows:
     \text{Tax Income} = 0.12 \times \text{Tourists' Consumption} \approx 24 N
 \end{equation}
 
+We should also consider the case when the tax rate is not fixed to propose suggestions to the
+government on how to adjust the tax rate to maximize the income of the tourism industry. We
+use the data calculated as above as the base case and assume that the tex rate $\eta$ is associated with the number of tourists.
+
+The actual visitors $N$ is calculated as follows:
+
+
+\begin{equation}
+    N= N_0 \cdot f(\eta)
+\end{equation}
+
+Intuitively, $\eta$ should be negatively correlated with the number of tourists. When $eta$ is 
+set to 0, we assume that the number of tourists will be $1.5N_0$, and when $\eta$ is set to 1, the number of tourists will be 0.
+Specifically, when $\eta$ is set to the current tax rate 0.12, the number of tourists will be $N_0$. 
+Also, $f(\eta)$ should be monotonically decreasing and fall steeply in the range of $[0,0.12]$ and $[0.85,1]$, 
+Using the above data
+we propose a model that fits the relationship between the tax rate and the number of tourists as follows:
+
+\begin{equation}
+    f(\eta) = -5.5 \eta^3 + 9.1903 \eta^2 - 5.1903 \eta + 1.5, \quad 0 \leq \eta \leq 1
+\end{equation}
+
+Therefore the tax income can be calculated as follows:
+
+\begin{equation}
+    \text{Tax Income} = 200.55N \cdot f(\eta), \quad 0 \leq \eta \leq 1
+\end{equation}
+
 \subsubsection{Fines}
 
 As there is no official data available, we assume that the 
@@ -122,9 +150,9 @@ This model falls short when only considering the environmental impact of the tou
 Based on the data we collect and the goal of our project, we propose a new model $KAYA_{tourism}$.
 
 
-\subsubsection{$KAYA_{tourism}$ Model}
+\subsubsection{$KAYA_{Tourism}$ Model}
 
-The $KAYA_{tourism}$ model is expressed as follows:
+The $KAYA_{Tourism}$ model is expressed as follows:
 
 \begin{equation}
     CO_{2\_Tourism}=G \times CG_{Tourism}
@@ -217,7 +245,7 @@ loss due to the overcrowding and rowdy tourists all account for the hidden costs
 The result yields:
 
 \begin{equation}
-    \text {Score}=5.75\times 10^{-8} N -0.002 \times N_{Local}+61.484
+    \text {Score}=5.011\times 10^{-9} N -0.002 \times N_{Local}+69.93
 \end{equation}
 
 
@@ -228,10 +256,18 @@ The result yields:
 Summing up all the three categories, we can get the final output of the model:
 
 \begin{equation}
- \mathcal{F} = (\alpha \cdot (632N+NQ \cdot e^{-0.2 Q})-\beta \cdot (0.815 \times \frac{N^2}{10^5} - 14.95N+7924000)) \cdot (5.75\times 10^{-8} N -0.002 \times N_{Local}+61.484)
+    \begin{aligned}
+    &\left\{\begin{array}{l}
+    F=(\alpha \cdot \text { Economy }-\beta \cdot \text { Environment }) \cdot \text { Society } \\[10pt]
+    \text { Economy }=200.55 N \cdot(f(\eta)+1)+NQ\cdot e^{-0.2 Q} \\[10pt]
+    \text { Environment }=0.815 \cdot \frac{N^2}{10^5}-14.95 N+7924000 \\[10pt]
+    \text { Society }=5.011\times 10^{-9} N -0.002 \times N_{Local}+69.93 \\[10pt]
+    f(\eta)=-5.5 \eta^3+9.1903 \eta^2-5.1903 \eta+1.5, \quad 0 \leq \eta \leq 1
+    \end{array}\right.
+    \end{aligned}
 \end{equation}
 
-where $N$ is independent variable, $\alpha$, $\beta$ 
-and $Q$ are parameters that can be adjusted accordingly, 
+where $N,Q,\eta$ are independent variables, $\alpha$, $\beta$ 
+and are parameters that can be adjusted accordingly, 
 $N_{Local}$ is the local population of Juneau assumed fixed.
-Our goal is to find the optimal value of $N$ that maximizes the output $\mathcal{F}$.
+Our goal is to find the optimal value of $N,Q,\eta$ that maximizes the output $\mathcal{F}$.
