@@ -259,7 +259,7 @@ Summing up all the three categories, we can get the final output of the model:
     \begin{aligned}
     &\left\{\begin{array}{l}
     F=(\alpha \cdot \text { Economy }-\beta \cdot \text { Environment }) \cdot \text { Society } \\[10pt]
-    \text { Economy }=200.55 N \cdot(f(\eta)+1)+NQ\cdot e^{-0.2 Q} \\[10pt]
+    \text { Economy }=200.55 N \cdot(f(\eta)+1) \cdot (\eta+1)+NQ\cdot e^{-0.2 Q} \\[10pt]
     \text { Environment }=0.815 \cdot \frac{N^2}{10^5}-14.95 N+7924000 \\[10pt]
     \text { Society }=5.011\times 10^{-9} N -0.002 \times N_{Local}+69.93 \\[10pt]
     f(\eta)=-5.5 \eta^3+9.1903 \eta^2-5.1903 \eta+1.5, \quad 0 \leq \eta \leq 1
@@ -271,3 +271,23 @@ where $N,Q,\eta$ are independent variables, $\alpha$, $\beta$
 and are parameters that can be adjusted accordingly, 
 $N_{Local}$ is the local population of Juneau assumed fixed.
 Our goal is to find the optimal value of $N,Q,\eta$ that maximizes the output $\mathcal{F}$.
+
+\subsection{Sensitivity Analysis}
+
+To evaluate the robustness of our model, we conduct a sensitivity analysis.
+
+\subsubsection{Principal Component Analysis}
+
+Principal Component Analysis (PCA) is a statistical method that
+extracts the most important information from a dataset and
+presents it as a set of new variables called principal components.
+The first principal component accounts for the largest variance in the data,
+the second principal component accounts for the second largest variance, and so on.
+The results of the PCA are shown below.
+
+
+\subsubsection{Analysis of the Results}
+
+It can be seen that the government should adjust the tax rate to 0.12 to 
+maximize the income of the tourism industry. The number of tourists should be
+around 1151, and the fine rate should be set to 0.15 to maximize the income of the tourism industry.
