@@ -12,7 +12,7 @@ The untimate goal is listed below:
 
 
 \begin{equation}
-    \mathcal{F}=(\alpha \cdot \text { Economy }-\beta \cdot \text { Environment }) \cdot \text { Hidden Cost Factors }
+    \mathcal{F}=(\alpha \cdot \text { Economy }-\beta \cdot \text { Environment }) / \text { Hidden Cost Factors }
 \end{equation}
 
 where $\alpha$ and $\beta$ are the weights of the economy and environment, denoting the importance we attach to each category.
@@ -21,7 +21,7 @@ society is an indicator that quantifies the satisfaction of the local residents 
 
 Our goal is to maximize the final output $\mathcal{F}$. Intuitively, it 
 is equivalent to maximizing economy income, minimizing the environmental 
-impact and elevating the final scores of hidden causes.
+impact and elevating the final scores of hidden cost factors.
 
 Each category is further divided into several minor factors such as local population, 
 number of tourists to extrapolate a mathematical model fitting the circumstances in Juneau,
@@ -75,7 +75,7 @@ The tax income can be calculated as follows:
 
 We should also consider the case when the tax rate is not fixed to propose suggestions to the
 government on how to adjust the tax rate to maximize the income of the tourism industry. We
-use the data calculated as above as the base case and assume that the tex rate $\eta$ is associated with the number of tourists.
+use the data calculated as above as the base case and assume that the tax rate $\eta$ is associated with the number of tourists.
 
 The actual visitors $N$ is calculated as follows:
 
@@ -237,7 +237,7 @@ The fitting function yields the following results:
 
 
 
-\subsection{Hidden Causes}
+\subsection{Hidden Cost Factors}
 
 Societal factors such as infrastructure, price of housing products, and the mental
 loss due to the overcrowding and rowdy tourists all account for the hidden costs of the tourism industry.
@@ -247,7 +247,7 @@ loss due to the overcrowding and rowdy tourists all account for the hidden costs
 Firstly we collected comprehensive and accurate data from all sources regarding Juneau, including the following factors:
 
 \textit{Satisfy\_Score},\textit{Crowding\_at\_Mendenhall\_Glacier}, \textit{Crowding\_on\_sidewalks\_downtown}, \\ \textit{Vehicle\_congestion\_downtown}, \textit{Flightseeing\_noise}, \textit{Air\_emissions\_from\_cruise\_ships},\\ \textit{Vehicle\_congestion\_outside\_of\_downtown}, 
-\textit{Whale\_watching\_boat\_traffic\_and\_wakes}, \textit{Crowding\_on\_trails}, \textit{Street\_Services}, Wastewater, \textit{Public\_Transit}, \textit{Parks\_and\_Recreation}, 
+\textit{Whale\_watching\_boat\_traffic\_and\_wakes}, \textit{Crowding\_on\_trails}, \textit{Street\_Services}, \textit{Wastewater}, \textit{Public\_Transit}, \textit{Parks\_and\_Recreation}, 
 \textit{Docks}, \textit{Ports}
 
 We then use the data $N$ and $N_{Local}$ calculated in \textit{Section 3} to fit a linear regression model. The results are as follows:
@@ -340,7 +340,9 @@ The calculated results are shown below:
     Street Services & 0.067125 & & \\ \hline
     \end{tabular}
     \end{table}
-    
+
+It can be noted that \textit{Air emissions from cruise ships} and \textit{Vehicle congestion outside of downtown} are the two important factors that affect the hidden cost of the tourism industry in Juneau, 
+which denotes that our model is able to capture the essence of the problem and the need of people. It also provides a comprehensive and accurate solution.
     
 
 \subsubsection{Social Impact Model}
@@ -408,8 +410,8 @@ The results are shown below:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{Sensitivity_Analysis.png} % 插入图片
-    \vspace{-0.5cm}
+    \includegraphics[width=0.97\textwidth]{Sensitivity_Analysis.png} % 插入图片
+    \vspace{-0.3cm}
     \caption{Sensitivity Analysis}
 \end{figure}
 
