@@ -39,7 +39,7 @@ tourists' consumption, tax income and fines.
 \subsubsection{Tourists' Consumption}
 
 We first calculate the average consumption of tourists in Juneau per day. Since there is no existing official data available, 
-we can infer it by other means. According to [source], avearge tax income from tourists in Juneau is 27.7 million dollars in 2018
+we can infer it by other means. According to [5], avearge tax income from tourists in Juneau is 27.7 million dollars in 2018
 with a tax rate of 12\%. We can use this information to estimate the average consumption of tourists in Juneau per day according to 
 the following equation.
 
@@ -80,9 +80,9 @@ use the data calculated as above as the base case and assume that the tex rate $
 The actual visitors $N$ is calculated as follows:
 
 
-\begin{equation}
+\begin{equation*}
     N= N_0 \cdot f(\eta)
-\end{equation}
+\end{equation*}
 
 Intuitively, $\eta$ should be negatively correlated with the number of tourists. When $eta$ is 
 set to 0, we assume that the number of tourists will be $1.5N_0$, and when $\eta$ is set to 1, the number of tourists will be 0.
@@ -91,9 +91,9 @@ Also, $f(\eta)$ should be monotonically decreasing and fall steeply in the range
 Using the above data
 we propose a model that fits the relationship between the tax rate and the number of tourists as follows:
 
-\begin{equation}
+\begin{equation*}
     f(\eta) = -5.5 \eta^3 + 9.1903 \eta^2 - 5.1903 \eta + 1.5, \quad 0 \leq \eta \leq 1
-\end{equation}
+\end{equation*}
 
 Therefore the tax income can be calculated as follows:
 
@@ -140,9 +140,9 @@ amount of CO2 emissions and the four factors
 that affect it: population, GDP per capita, energy intensity and carbon intensity.
  The KAYA model is expressed as follows:
 
-\begin{equation}
+\begin{equation*}
     \text { CO2 Emissions }=P \times GDP \times E I \times C I
-\end{equation}
+\end{equation*}
 
 where $P$ denotes the population, $GDP$ denotes the GDP per capita, 
 $EI$ denotes the energy intensity and $CI$ denotes the carbon intensity.
@@ -154,9 +154,9 @@ Based on the data we collect and the goal of our project, we propose a new model
 
 The $KAYA_{Tourism}$ model is expressed as follows:
 
-\begin{equation}
+\begin{equation*}
     CO_{2\_Tourism}=G \times CG_{Tourism}
-\end{equation}
+\end{equation*}
 
 where $G$ denotes the gross income of the tourism industry and $CG = EI \times CI$. To calculate 
 the emission of $CO_2$ in the tourism industry, we first looked up the data of the Juneau's carbon emission and
@@ -323,7 +323,7 @@ The calculated results are shown below:
 
 \begin{table}[ht]
     \centering
-    \renewcommand{\arraystretch}{1.2}
+    \renewcommand{\arraystretch}{1.3}
     \caption{Factors and Their Weights}
     \begin{tabular}{|l|c|l|c|}
     \hline
@@ -399,3 +399,19 @@ To evaluate the robustness of our model, we conduct a sensitivity analysis.
 Since there isn't many factors that can be adjusted, we don't need to use the Principal Component Analysis (PCA).
 
 The results are shown below:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Sensitivity_Analysis.png} % 插入图片
+    \vspace{-0.5cm}
+    \caption{Sensitivity Analysis}
+\end{figure}
+
+It can be noted that when $\eta$ (tax rate) and $q$ are held constant, 
+the output $\mathcal{F}$ does not change significantly with the change of $N_{Max}$.
+However, when $\eta$ becomes the independent variable, the output $\mathcal{F}$
+budges significantly with the change of $\eta$. The result is similar when $q$ (fine amount) becomes the independent variable.
+Therefore, we can conclude that $N_{Max}$ has minimal impact on the result, 
+$\eta$ shows moderate sensitivity with a non-linear effect, 
+and $q$ is the most sensitive, displaying significant influence on 
+the output within its range.
