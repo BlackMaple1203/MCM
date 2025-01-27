@@ -7,12 +7,12 @@ In this section we need to select factors to quantify and track the tourism indu
 It is impossible and unnecessary to consider all the factors that may affect the 
 tourism industry, only those that are relevant to the problem need to be considered.
 Drawing on the idea of the divide-and-conquer algorithm, we first divide the factors 
-into three categories: economy, environment and society(aka hidden causes). 
+into three categories: economy, environment and society (aka hidden cost factors). 
 The untimate goal is listed below:
 
 
 \begin{equation}
-    \mathcal{F}=(\alpha \cdot \text { Economy }-\beta \cdot \text { Environment }) \cdot \text { Hidden Causes }
+    \mathcal{F}=(\alpha \cdot \text { Economy }-\beta \cdot \text { Environment }) \cdot \text { Hidden Cost Factors }
 \end{equation}
 
 where $\alpha$ and $\beta$ are the weights of the economy and environment, denoting the importance we attach to each category.
@@ -154,9 +154,9 @@ Based on the data we collect and the goal of our project, we propose a new model
 
 The $KAYA_{Tourism}$ model is expressed as follows:
 
-\begin{equation*}
+\begin{equation}
     CO_{2\_Tourism}=G \times CG_{Tourism}
-\end{equation*}
+\end{equation}
 
 where $G$ denotes the gross income of the tourism industry and $CG = EI \times CI$. To calculate 
 the emission of $CO_2$ in the tourism industry, we first looked up the data of the Juneau's carbon emission and
@@ -248,7 +248,7 @@ Firstly we collected comprehensive and accurate data from all sources regarding 
 
 \textit{Satisfy\_Score},\textit{Crowding\_at\_Mendenhall\_Glacier}, \textit{Crowding\_on\_sidewalks\_downtown}, \\ \textit{Vehicle\_congestion\_downtown}, \textit{Flightseeing\_noise}, \textit{Air\_emissions\_from\_cruise\_ships},\\ \textit{Vehicle\_congestion\_outside\_of\_downtown}, 
 \textit{Whale\_watching\_boat\_traffic\_and\_wakes}, \textit{Crowding\_on\_trails}, \textit{Street\_Services}, Wastewater, \textit{Public\_Transit}, \textit{Parks\_and\_Recreation}, 
-\textit{Docks}, \textit{Ports}, \textit{JNU\_Composite}, \textit{Grocery\_Items}, \textit{JNU\_Housing}, \textit{Utilities}, \textit{Transportation}, \textit{Healthcare} and \textit{Misc.\_Good\_and\_Services}
+\textit{Docks}, \textit{Ports}
 
 We then use the data $N$ and $N_{Local}$ calculated in \textit{Section 3} to fit a linear regression model. The results are as follows:
 
@@ -392,6 +392,12 @@ the optimal value of $N,Q,\eta$ is calculated as follows:
     \end{array}\right.
     \end{aligned}
 \end{equation}
+
+The results suggest a feasible and effective strategy that the government can implement to promote sustainable development. 
+
+The proposed measures include reducing the maximum tourist capacity from 1.728 million in 2024 to 1.408 million, increasing the tax rate to 0.221, and introducing a 5\$ environmental penalty. 
+
+This strategy not only alleviates the pressure on Juneau's local ecosystem but also reduces the strain on essential infrastructure, such as water supply and public transportation. Additionally, it contributes to enhancing the overall well-being and satisfaction of local residents.
 
 \subsection{Sensitivity Analysis}
 
