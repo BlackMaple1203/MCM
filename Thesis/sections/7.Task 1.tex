@@ -108,9 +108,9 @@ fine rate is negatively correlated with the amount of fines
 and follows an exponential distribution $f(x) = \lambda \cdot e^{-\lambda x}$. We also assume that 
 fined rate falls to 5\% when the amount of fines climbs to 15 dollars, that is:
 
-\begin{equation}
+\begin{equation*}
     \int_0^{15} \lambda \cdot e^{-\lambda x} d x=1-95 \% \Rightarrow \lambda \approx 0.2
-\end{equation}
+\end{equation*}
 
 Therefore the total amount of fines can be calculated as follows:
 
@@ -174,17 +174,17 @@ The results are listed below.
     \centering
     \begin{minipage}{0.32\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Ratio.png}
+        \includegraphics[width=\textwidth]{Ratio.jpg}
         % \caption{Caption 1}
     \end{minipage}
     \begin{minipage}{0.32\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{CG_pred.png}
+        \includegraphics[width=\textwidth]{CG_pred.jpg}
         % \caption{Caption 2}
     \end{minipage}
     \begin{minipage}{0.32\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{CG_pred2.png}
+        \includegraphics[width=\textwidth]{CG_pred2.jpg}
         % \caption{Caption 3}
     \end{minipage}
 \end{figure}
@@ -193,17 +193,17 @@ The results are listed below.
     \centering
     \begin{minipage}{0.32\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{GDP.png}
+        \includegraphics[width=\textwidth]{GDP.jpg}
         % \caption{Caption 4}
     \end{minipage}
     \begin{minipage}{0.32\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Emission.png}
+        \includegraphics[width=\textwidth]{Emission.jpg}
         % \caption{Caption 5}
     \end{minipage}
     \begin{minipage}{0.32\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Price.png}
+        \includegraphics[width=\textwidth]{Price.jpg}
         % \caption{Caption 6}
     \end{minipage}
 \end{figure}
@@ -212,17 +212,17 @@ The results are listed below.
     \centering
     \begin{minipage}{0.32\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Cost.png}
+        \includegraphics[width=\textwidth]{Cost.jpg}
         % \caption{Caption 7}
     \end{minipage}
     \begin{minipage}{0.32\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Carbon_pred1.png}
+        \includegraphics[width=\textwidth]{Carbon_pred1.jpg}
         % \caption{Caption 8}
     \end{minipage}
     \begin{minipage}{0.33\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Carbon_pred2.png}
+        \includegraphics[width=\textwidth]{Carbon_pred2.jpg}
         % \caption{Caption 9}
     \end{minipage}
 \end{figure}
@@ -242,10 +242,114 @@ The fitting function yields the following results:
 Societal factors such as infrastructure, price of housing products, and the mental
 loss due to the overcrowding and rowdy tourists all account for the hidden costs of the tourism industry.
 
+\subsubsection{Data Processing}
+
+Firstly we collected comprehensive and accurate data from all sources regarding Juneau, including the following factors:
+
+\textit{Satisfy\_Score},\textit{Crowding\_at\_Mendenhall\_Glacier}, \textit{Crowding\_on\_sidewalks\_downtown}, \\ \textit{Vehicle\_congestion\_downtown}, \textit{Flightseeing\_noise}, \textit{Air\_emissions\_from\_cruise\_ships},\\ \textit{Vehicle\_congestion\_outside\_of\_downtown}, 
+\textit{Whale\_watching\_boat\_traffic\_and\_wakes}, \textit{Crowding\_on\_trails}, \textit{Street\_Services}, Wastewater, \textit{Public\_Transit}, \textit{Parks\_and\_Recreation}, 
+\textit{Docks}, \textit{Ports}, \textit{JNU\_Composite}, \textit{Grocery\_Items}, \textit{JNU\_Housing}, \textit{Utilities}, \textit{Transportation}, \textit{Healthcare} and \textit{Misc.\_Good\_and\_Services}
+
+We then use the data $N$ and $N_{Local}$ calculated in \textit{Section 3} to fit a linear regression model. The results are as follows:
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{2dLinear_1.jpg} % 插入图片
+	    %   \vspace{-0.8cm}
+        % \caption{}
+    \end{minipage}
+    \hfill
+	%   \hspace{0.1\textwidth} % 调整这里的值来改变两张图片之间的间距
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{2dLinear_2.jpg} % 插入图片
+	    %   \vspace{-0.8cm}
+        % \caption{}
+\end{minipage}
+\caption{Bivariate Linear Regression}
+\end{figure}
+
+Only a fraction of results are shown here. The full results can be found in \textit{Appendix A}.
+
+\textbf{\textit{Model for stsfy: }}
+
+$\text{stsfy} = -4.693528652706527\times 10^{-5} N - 0.0060844912311383 \times N_{local} + 407.6518514$
+
+\textbf{\textit{Model for Crowding\_at\_Mendenhall\_Glacier: }}
+
+$\text{Crowding\_at\_Mendenhall\_Glacier} = 1.1573084349139379\times 10^{-5} N - 0.0017873857238289111 \times N_{local} + 100.15433801$
+
+
+\subsubsection{Entropy Weight Method}
+
+The Entropy Weight Method (EWM) is a quantitative technique commonly used 
+to determine the weight or importance of various factors in multi-criteria 
+decision-making. It is based on the concept of information entropy from 
+information theory, which measures the degree of disorder or uncertainty in a system.
+We mainly utilized the following equations.
+
+\paragraph{Convert to Probability Matrix}
+
+
+\[P_{i j}=\frac{X_{i j}}{\sum_{i=1}^n X_{i j}}\]
+
+
+where:
+\begin{itemize}
+    \item $P_{i j}$ is the probability value of the $i$-th row and $j$-th column.
+    \item $X_{i j}$ is the value of the $i$-th row and $j$-th column in the original data matrix.
+    \item $\sum_{i=1}^n X_{i j}$ is the sum of all elements in the $j$-th column.
+\end{itemize}
+
+\paragraph{Calculate Information Entropy}
+
+
+\[H_j=-k \sum_{i=1}^n P_{i j} \ln \left(P_{i j}+\epsilon\right)\]
+
+where:
+
+\begin{itemize}
+    \item $H_j$ is the entropy value of the $j$-th index.
+    \item $k=\frac{1}{\ln (n)}$ is the normalization coefficient to ensure that the entropy value is within the range of $[0,1]$.
+    \item $P_{i j}$ is the probability value.
+    \item $\epsilon$ is a very small value (e.g. $10^{-12}$) to avoid numerical errors in the logarithm calculation.
+\end{itemize}
+
+\vspace{0.5cm}
+
+The calculated results are shown below:
+
+\begin{table}[ht]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Factors and Their Weights}
+    \begin{tabular}{|l|c|l|c|}
+    \hline
+    \textbf{Factor} & \textbf{Weight} & \textbf{Factor} & \textbf{Weight} \\ \hline
+    stsfy & 0.029112 & Wastewater & 0.038384 \\ \hline
+    Crowding at Mendenhall Glacier & 0.029089 & Public Transit & 0.012025 \\ \hline
+    Crowding on sidewalks downtown & 0.002553 & Parks and Recreation & 0.180182 \\ \hline
+    Vehicle congestion downtown & 0.058313 & Docks & 0.024321 \\ \hline
+    Flightseeing noise & 0.025751 & Ports & 0.121009 \\ \hline
+    Air emissions from cruise ships & 0.139424 & Grocery Items & 0.015780 \\ \hline
+    Vehicle congestion outside of downtown & 0.129145 & JNU Housing & 0.034101 \\ \hline
+    Whale watching boat traffic and wakes & 0.021685 & Utilities & 0.002685 \\ \hline
+    Crowding on trails & 0.034678 & Transportation & 0.034639 \\ \hline
+    Street Services & 0.067125 & & \\ \hline
+    \end{tabular}
+    \end{table}
+    
+    
+
+\subsubsection{Social Impact Model}
+
+Multiplying the weight of each factor by the corresponding value and summing them up, we can get the social impact $\mathcal{I}$.
 The result yields:
 
 \begin{equation}
-    \text {Score}=5.011\times 10^{-9} N -0.002 \times N_{Local}+69.93
+    \mathcal{I}=5.011\times 10^{-9} N -0.002 \times N_{Local}+69.93
 \end{equation}
 
 
@@ -258,8 +362,8 @@ Summing up all the three categories, we can get the final output of the model:
 \begin{equation}
     \begin{aligned}
     &\left\{\begin{array}{l}
-    F=(\alpha \cdot \text { Economy }-\beta \cdot \text { Environment }) \cdot \text { Society } \\[10pt]
-    \text { Economy }=200.55 N \cdot(f(\eta)+1) \cdot (\eta+1)+NQ\cdot e^{-0.2 Q} \\[10pt]
+    \mathcal{F}=(\alpha \cdot \text { Economy }-\beta \cdot \text { Environment }) / \text { Society } \\[10pt]
+    \text { Economy }=200.55 N \cdot f(\eta) \cdot (\eta+1)+NQ\cdot e^{-0.2 Q} \\[10pt]
     \text { Environment }=0.815 \cdot \frac{N^2}{10^5}-14.95 N+7924000 \\[10pt]
     \text { Society }=5.011\times 10^{-9} N -0.002 \times N_{Local}+69.93 \\[10pt]
     f(\eta)=-5.5 \eta^3+9.1903 \eta^2-5.1903 \eta+1.5, \quad 0 \leq \eta \leq 1
@@ -272,22 +376,26 @@ and are parameters that can be adjusted accordingly,
 $N_{Local}$ is the local population of Juneau assumed fixed.
 Our goal is to find the optimal value of $N,Q,\eta$ that maximizes the output $\mathcal{F}$.
 
+Since the number of tourists in the coming year is related to the number of tourists in the previous year, 
+we use the $N$ in 2024 to predict the parameters in 2025, and the results are shown below.
+
+When $\alpha$ is set to 1 and $\beta$ is set to 30, 
+the optimal value of $N,Q,\eta$ is calculated as follows:
+
+\begin{equation}
+    \begin{aligned}
+    &\left\{\begin{array}{l}
+    N_{Max} = 1408 \\[10pt]
+    N=1264 \\[10pt]
+    Q=5 \\[10pt]
+    \eta=0.221
+    \end{array}\right.
+    \end{aligned}
+\end{equation}
+
 \subsection{Sensitivity Analysis}
 
 To evaluate the robustness of our model, we conduct a sensitivity analysis.
+Since there isn't many factors that can be adjusted, we don't need to use the Principal Component Analysis (PCA).
 
-\subsubsection{Principal Component Analysis}
-
-Principal Component Analysis (PCA) is a statistical method that
-extracts the most important information from a dataset and
-presents it as a set of new variables called principal components.
-The first principal component accounts for the largest variance in the data,
-the second principal component accounts for the second largest variance, and so on.
-The results of the PCA are shown below.
-
-
-\subsubsection{Analysis of the Results}
-
-It can be seen that the government should adjust the tax rate to 0.12 to 
-maximize the income of the tourism industry. The number of tourists should be
-around 1151, and the fine rate should be set to 0.15 to maximize the income of the tourism industry.
+The results are shown below:
